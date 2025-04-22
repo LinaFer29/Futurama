@@ -6,6 +6,7 @@ function CharacterList() {
   const [characters, setCharacters] = useState([]);
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSpecie, setSelectedSpecie] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,11 +14,11 @@ function CharacterList() {
     const fetchCharacters = async () => {
       try {
         const response = await fetch('https://api.sampleapis.com/futurama/characters');
-        
+
         if (!response.ok) {
           throw new Error('Error al obtener los personajes');
         }
-        
+
         const data = await response.json();
         setCharacters(data);
         setFilteredCharacters(data);
@@ -31,6 +32,8 @@ function CharacterList() {
     fetchCharacters();
   }, []);
 
+  const speciesList = [...new Set(characters.map(character => character.species))];
+
   useEffect(() => {
     const results = characters.filter(character =>
       character.name.first.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -38,6 +41,17 @@ function CharacterList() {
     );
     setFilteredCharacters(results);
   }, [searchTerm, characters]);
+
+  useEffect(() => {
+    const results = characters.filter(character =>
+      character.species.toLowerCase().includes(selectedSpecie.toLowerCase())
+    );
+    setFilteredCharacters(results);
+  }, [selectedSpecie, characters]);
+
+  const handleSpecieChange = (e) => {
+    setSelectedSpecie(e.target.value);
+  }
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -54,7 +68,7 @@ function CharacterList() {
   return (
     <div className="character-container">
       <h1>Personajes de Futurama</h1>
-      
+
       <div className="search-container">
         <input
           type="text"
@@ -64,7 +78,27 @@ function CharacterList() {
           className="search-input"
         />
       </div>
-      
+      <div className="specie-filter">
+        <label htmlFor="specie">Filtrar por especie:</label>
+        <select className="select-species" id="species" onChange={handleSpecieChange}>
+          <option value="">Todas</option>
+          {speciesList.map((specie, index) => (
+            <option key={index} value={specie}>
+              {specie}
+            </option>
+          ))}
+        </select>
+        {/* <input
+          type="text"
+          placeholder="Buscar personaje por tipo"
+          value={selectedSpecie}
+          onChange={handleSpecieChange}
+          className="filter-input"
+        /> */}
+      </div>
+
+
+
       {filteredCharacters.length === 0 ? (
         <div className="no-results">No se encontraron personajes con ese nombre</div>
       ) : (
