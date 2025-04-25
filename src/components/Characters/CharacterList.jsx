@@ -10,6 +10,7 @@ function CharacterList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Cargar los personajes desde la API
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
@@ -32,27 +33,38 @@ function CharacterList() {
     fetchCharacters();
   }, []);
 
+  // Obtener la lista de especies únicas
   const speciesList = [...new Set(characters.map(character => character.species))];
 
+  // Guardar filtro en localStorage
   useEffect(() => {
-    const results = characters.filter(character =>
-      character.name.first.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      character.name.last.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredCharacters(results);
-  }, [searchTerm, characters]);
+    const storedSpecie = JSON.parse(localStorage.getItem('selectedSpecie'));
+    if (storedSpecie) {
+      setSelectedSpecie(storedSpecie);
+    }
+  }, []);
 
   useEffect(() => {
-    const results = characters.filter(character =>
-      character.species.toLowerCase().includes(selectedSpecie.toLowerCase())
+    localStorage.setItem('selectedSpecie', JSON.stringify(selectedSpecie));
+  }, [selectedSpecie]);
+
+  // Filtrar los personajes según el término de búsqueda y la especie seleccionada
+  useEffect(() => {
+    const results = characters.filter(character => {
+      const fullName = `${character.name.first} ${character.name.middle} ${character.name.last}`.toLowerCase();
+      const matchesName = fullName.includes(searchTerm.toLowerCase());
+      const matchesSpecie = selectedSpecie === '' || character.species === selectedSpecie;
+      return matchesName && matchesSpecie;
+    }
     );
     setFilteredCharacters(results);
-  }, [selectedSpecie, characters]);
+  }, [searchTerm, selectedSpecie,characters]);
 
+  // Manejar el cambio en el campo de búsqueda
   const handleSpecieChange = (e) => {
     setSelectedSpecie(e.target.value);
   }
-
+  // Manejar el cambio en el campo de búsqueda
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -88,19 +100,12 @@ function CharacterList() {
             </option>
           ))}
         </select>
-        {/* <input
-          type="text"
-          placeholder="Buscar personaje por tipo"
-          value={selectedSpecie}
-          onChange={handleSpecieChange}
-          className="filter-input"
-        /> */}
       </div>
 
 
 
       {filteredCharacters.length === 0 ? (
-        <div className="no-results">No se encontraron personajes con ese nombre</div>
+        <div className="no-results">Sin resultados para esta búsqueda y filtro</div>
       ) : (
         <div className="character-grid">
           {filteredCharacters.map(character => (
