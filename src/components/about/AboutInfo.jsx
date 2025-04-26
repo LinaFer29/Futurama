@@ -1,13 +1,12 @@
 import './About.css';
-import imagenLina from './img/lina.jpg';
-import imagenJuan from './img/juan2.jpg';
+
 
 function AboutInfo() {
   return (
     <div className="about-container">
       <div className="profile-card">
         <div className="profile-image">
-        <img src={imagenLina} alt="Foto de Lina" />
+        <img src="/img/Lina.jpg" alt="Foto de Lina" />
         </div>
         <div className="profile-info">
           <h2>Lina Fernandez</h2>
@@ -21,7 +20,7 @@ function AboutInfo() {
       {/* Juan José */}
       <div className="profile-card">
         <div className="profile-image">
-        <img src={imagenJuan} alt="Foto de Juan" />
+        <img src="/img/juan2.jpg" alt="Foto de Juan" />
         </div>
         <div className="profile-info">
           <h2>Juan José Pizo</h2>
