@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-
+import InstallButton from './InstallButton'; 
 
 
 function Navbar({ onLogout }) {
@@ -22,7 +22,7 @@ function Navbar({ onLogout }) {
     localStorage.removeItem('username');
     setUsername('');
     setShowMenu(false);
-    onLogout(); // 👈 Notifica a App que cerró sesión
+    onLogout(); // 
     navigate('/');
   };  
 
@@ -59,6 +59,7 @@ function Navbar({ onLogout }) {
             Sobre Nosotros
           </Link>
 
+
           {username && (
             <div className="user-menu">
               <span onClick={toggleMenu} className="username">
@@ -71,6 +72,7 @@ function Navbar({ onLogout }) {
               )}
             </div>
           )}
+          <InstallButton /> 
         </div>
       </div>
     </nav>

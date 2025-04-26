@@ -107,5 +107,20 @@
   .dropdown-menu button:hover {
     background-color: #eee;
   }
-
+  
+  .install-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .install-button:hover {
+    background-color: #0056b3;
+  }
 }
