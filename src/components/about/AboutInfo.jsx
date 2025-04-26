@@ -2,7 +2,6 @@ import './About.css';
 import imagenLina from './img/lina.jpg';
 import imagenJuan from './img/juan2.jpg';
 
-
 function AboutInfo() {
   return (
     <div className="about-container">
