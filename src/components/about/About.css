@@ -1,4 +1,28 @@
-.about-container {
+.about-header {
+  margin-bottom: 40px;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  color: #34495e;
+}
+
+.decorative-line {
+  width: 80px;
+  height: 4px;
+  background-color: #4e73df;
+  margin: 20px auto;
+  border: none;
+  border-radius: 5px;
+}
+
+.profile-container {
     margin-top: 20px;
     padding: 20px;
     display: flex;
