@@ -20,6 +20,11 @@
     align-items: center;
     justify-content: center;
   }
+
+  .profile-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+  }
   
   .profile-image img {
     margin-bottom: 40px;
