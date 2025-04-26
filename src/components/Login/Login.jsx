@@ -14,7 +14,10 @@ function Login({ onLogin }) {
       return;
     }
     
-    // Simple validation passed, call the onLogin callback
+    // Guarda el nombre en localStorage
+    localStorage.setItem('username', username);
+
+    // Llama la función para actualizar el estado
     onLogin();
   };
 
