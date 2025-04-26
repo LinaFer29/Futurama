@@ -14,19 +14,42 @@ export default defineConfig({
         short_name: 'Futurama',
         description: 'Aplicación de Futurama PWA',
         theme_color: '#007bff',
+        display: 'standalone',
+        start_url: '/',
         icons: [
           {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
+            src: 'img/letra-f.png',
+            sizes: '128x128',
             type: 'image/png',
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'img/letra-f-144.png',
+            sizes: '144x144',
+            type: 'image/png',
+          },
+          {
+            src: 'img/letra-f-512.png',
             sizes: '512x512',
             type: 'image/png',
           },
         ],
+        screenshots: [
+          {
+            src: 'img/screenshot1.png',
+            sizes: '1080x539',
+            type: 'image/png',
+            form_factor: 'wide', // Para pantallas anchas
+          },
+          {
+            src: 'img/screenshot2.png',
+            sizes: '1080x539',
+            type: 'image/png',
+          },
+        ],
       },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,png,jpg,svg,json}'],
+      }
     }),
   ],
 });

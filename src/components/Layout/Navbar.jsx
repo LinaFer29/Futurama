@@ -58,13 +58,13 @@ function Navbar({ onLogout }) {
           >
             Sobre Nosotros
           </Link>
-
-
-          {username && (
-            <div className="user-menu">
-              <span onClick={toggleMenu} className="username">
-                {username} ⬇️
+         
+            {username && (
+            <div onClick={toggleMenu} className="user-menu">
+              <span  className="username">
+                {username} 
               </span>
+                <img src="/img/cerrar-sesion-de-usuario.png" alt="Icon Cerrar Sesion" className='icon-logout' /> 
               {showMenu && (
                 <div className="dropdown-menu">
                   <button onClick={handleLogout}>Cerrar sesión</button>
