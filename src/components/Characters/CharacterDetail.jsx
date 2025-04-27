@@ -77,7 +77,7 @@ function CharacterDetail() {
                 </div>
 
                 <div className="character-description">
-                    <   h2 style={labelStyle}>Genero</h2>
+                    <h2 style={labelStyle}>Genero</h2>
                     <p style={labelStyle}>{character.gender}</p>
                     <h2 style={labelStyle}>Especie</h2>
                     <p style={labelStyle}>{character.species}</p>
