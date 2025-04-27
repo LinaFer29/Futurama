@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import InstallButton from './InstallButton'; 
-
+import { useContext } from "react";
+import { ThemeContext } from '../../ThemeContext';
 
 function Navbar({ onLogout }) {
   const location = useLocation();
@@ -10,6 +11,8 @@ function Navbar({ onLogout }) {
 
   const [username, setUsername] = useState('');
   const [showMenu, setShowMenu] = useState(false);
+
+  const { modoOscuro } = useContext(ThemeContext);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -30,8 +33,23 @@ function Navbar({ onLogout }) {
     setShowMenu(!showMenu);
   };
 
+  const navbarStyle = {
+    backgroundColor: modoOscuro ? '#222' : '#f5f5f5', 
+    color: modoOscuro ? '#fff' : '#000',               
+    borderBottom: modoOscuro ? '1px solid #555' : '1px solid #ccc',
+  };
+
+  const linkStyle = {
+    color: modoOscuro ? '#fff' : '#000',
+  };
+  
+  const userMenuStyle = {
+    color: modoOscuro ? '#fff' : '#000',
+  };
+  
+
   return (
-    <nav className="navbar">
+    <nav className="navbar" style={navbarStyle}>
       <div className="navbar-container">
         <div className="navbar-logo">
           <Link to="/characters">
@@ -43,24 +61,27 @@ function Navbar({ onLogout }) {
           <Link 
             to="/characters" 
             className={location.pathname === '/characters' ? 'active' : ''}
+            style={linkStyle}
           >
             Personajes
           </Link>
           <Link 
             to="/form" 
             className={location.pathname === '/form' ? 'active' : ''}
+            style={linkStyle}
           >
             Formulario
           </Link>
           <Link 
             to="/about" 
             className={location.pathname === '/about' ? 'active' : ''}
+            style={linkStyle}
           >
             Sobre Nosotros
           </Link>
          
             {username && (
-            <div onClick={toggleMenu} className="user-menu">
+            <div onClick={toggleMenu} className="user-menu" style={userMenuStyle}>
               <span  className="username">
                 {username} 
               </span>

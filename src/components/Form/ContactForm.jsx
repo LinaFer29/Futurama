@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ThemeContext } from '../../ThemeContext';
 import './ContactForm.css';
 
+
 function ContactForm() {
+
+  const { modoOscuro } = useContext(ThemeContext);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -87,8 +92,14 @@ function ContactForm() {
     }, 3000);
   };
 
+  const formStyle = {
+    backgroundColor: modoOscuro ? '#222' : '#fff',
+    color: modoOscuro ? 'white' : 'black',
+    border: modoOscuro ? '1px solid #555' : '1px solid #ccc',
+  };
+  
   return (
-    <div className="form-container">
+    <div className="form-container" style={formStyle}>
       <h1>Formulario de Contacto</h1>
       
       {submitted && (
