@@ -46,6 +46,7 @@ function Navbar({ onLogout }) {
   const userMenuStyle = {
     color: modoOscuro ? '#fff' : '#000',
   };
+
   
 
   return (
@@ -81,8 +82,8 @@ function Navbar({ onLogout }) {
           </Link>
          
             {username && (
-            <div onClick={toggleMenu} className="user-menu" style={userMenuStyle}>
-              <span  className="username">
+            <div onClick={toggleMenu} className="user-menu">
+              <span className="username" style={userMenuStyle}>
                 {username} 
               </span>
                 <img src="/img/cerrar-sesion-de-usuario.png" alt="Icon Cerrar Sesion" className='icon-logout' /> 

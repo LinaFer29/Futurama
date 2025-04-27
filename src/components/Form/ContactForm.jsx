@@ -94,13 +94,34 @@ function ContactForm() {
 
   const formStyle = {
     backgroundColor: modoOscuro ? '#222' : '#fff',
-    color: modoOscuro ? 'white' : 'black',
+    color: modoOscuro ? "#fff" : "#000",
+    border: modoOscuro ? '1px solid #555' : '1px solid #ccc',
+  };
+
+  const inputStyle = {
+    backgroundColor: modoOscuro ? '#333' : '#fff',
+    color: modoOscuro ? "#fff" : "#000",
     border: modoOscuro ? '1px solid #555' : '1px solid #ccc',
   };
   
+  const buttonStyle = {
+    backgroundColor: modoOscuro ? '#444' : '#007bff',
+    color: modoOscuro ? "#fff" : "#000",
+    border: modoOscuro ? '1px solid #555' : 'none',
+  };
+  
+  const labelStyle = {
+    color: modoOscuro ? "#fff" : "#000",
+  };
+
+  const titleStyle = {
+    color: modoOscuro ? "#fff" : "#000",
+  };
+  
+  
   return (
     <div className="form-container" style={formStyle}>
-      <h1>Formulario de Contacto</h1>
+      <h1 style={titleStyle}>Formulario de Contacto</h1>
       
       {submitted && (
         <div className="success-message">
@@ -110,7 +131,7 @@ function ContactForm() {
       
       <form onSubmit={handleSubmit} className="contact-form">
         <div className="form-group">
-          <label htmlFor="name">Nombre</label>
+        <label htmlFor="name" style={labelStyle}>Nombre</label>
           <input
             type="text"
             id="name"
@@ -118,12 +139,13 @@ function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             className={errors.name ? 'error' : ''}
+            style={inputStyle}
           />
           {errors.name && <span className="error-text">{errors.name}</span>}
         </div>
         
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+        <label htmlFor="email" style={labelStyle}>Email</label>
           <input
             type="email"
             id="email"
@@ -131,12 +153,14 @@ function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             className={errors.email ? 'error' : ''}
+            style={inputStyle}
+
           />
           {errors.email && <span className="error-text">{errors.email}</span>}
         </div>
         
         <div className="form-group">
-          <label htmlFor="age">Edad</label>
+        <label htmlFor="age" style={labelStyle}>Edad</label>
           <input
             type="number"
             id="age"
@@ -144,12 +168,13 @@ function ContactForm() {
             value={formData.age}
             onChange={handleChange}
             className={errors.age ? 'error' : ''}
+            style={inputStyle}
           />
           {errors.age && <span className="error-text">{errors.age}</span>}
         </div>
         
         <div className="form-group">
-          <label htmlFor="message">Mensaje</label>
+        <label htmlFor="message" style={labelStyle}>Mensaje</label>
           <textarea
             id="message"
             name="message"
@@ -157,11 +182,12 @@ function ContactForm() {
             onChange={handleChange}
             rows="5"
             className={errors.message ? 'error' : ''}
+            style={inputStyle}
           ></textarea>
           {errors.message && <span className="error-text">{errors.message}</span>}
         </div>
         
-        <button type="submit" className="submit-button">
+        <button type="submit" className="submit-button" style={buttonStyle}>
           Enviar Mensaje
         </button>
       </form>

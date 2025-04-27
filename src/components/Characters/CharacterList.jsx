@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import CharacterCard from './CharacterCard';
 import './CharacterList.css';
+import { useContext } from "react";
+import { ThemeContext } from '../../ThemeContext';
+
 
 function CharacterList() {
+  const { modoOscuro } = useContext(ThemeContext);
   const [characters, setCharacters] = useState([]);
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,6 +16,7 @@ function CharacterList() {
 
   // Cargar los personajes desde la API
   useEffect(() => {
+
     const fetchCharacters = async () => {
       try {
         const response = await fetch('https://api.sampleapis.com/futurama/characters');
@@ -69,6 +74,11 @@ function CharacterList() {
     setSearchTerm(e.target.value);
   };
 
+  const titleStyle = {
+    color: modoOscuro ? "#fff" : "#000",
+  };
+  
+
   if (loading) {
     return <div className="loading">Cargando personajes...</div>;
   }
@@ -79,7 +89,7 @@ function CharacterList() {
 
   return (
     <div className="character-container">
-      <h1>Personajes de Futurama</h1>
+      <h1 style={titleStyle}>Personajes de Futurama</h1>
 
       <div className="search-container">
         <input

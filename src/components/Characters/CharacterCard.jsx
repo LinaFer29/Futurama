@@ -13,7 +13,6 @@ function CharacterCard({ character }) {
     const StyleCard = {
       backgroundColor: modoOscuro ? "#333" : "#eee",
       color: modoOscuro ? "#fff" : "#000",
-      border: modoOscuro ? "1px solid #aaa" : "1px solid #ccc ",
 
     };
 
@@ -21,8 +20,6 @@ function CharacterCard({ character }) {
       color: modoOscuro ? "#fff" : "#000",
     };
     
-
-
   return (
     <Link to={`/characters/${id}`} className="card-link">
       <div style= {StyleCard} className="character-card">
@@ -36,9 +33,9 @@ function CharacterCard({ character }) {
             }}
           />
         </div>
-        <div className="character-info" style={textStyle}>
-          <h2>{fullName}</h2>
-          <p>Especie: {species}</p>
+        <div className="character-info" >
+          <h2 style={textStyle}>{fullName}</h2>
+          <p style={textStyle}>Especie: {species}</p>
         </div>
       </div>
     </Link>

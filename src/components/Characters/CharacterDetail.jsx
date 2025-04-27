@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './CharacterDetail.css';
+import { useContext } from "react";
+import { ThemeContext } from "../../ThemeContext";
+
 
 function CharacterDetail() {
     // Obtener el ID del personaje de la URL
+    const { modoOscuro } = useContext(ThemeContext);
     const { id } = useParams();
     const [character, setCharacter] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -28,6 +32,25 @@ function CharacterDetail() {
 
         fetchCharacter();
     }, [id]);
+    
+    const detailcontainerStyle = {
+    backgroundColor: modoOscuro ? "#333" : "#eee",
+    color: modoOscuro ? "#fff" : "#000",
+    };
+
+    const titleStyle = {
+    color: modoOscuro ? "#fff" : "#000",
+    };
+
+    const labelStyle = {
+    color: modoOscuro ? "#fff" : "#000",
+    };
+
+    const buttonStyle = {
+    backgroundColor: modoOscuro ? "#444" : "#007bff",
+    color: modoOscuro ? "#fff" : "#000",
+    border: modoOscuro ? "1px solid #555" : "none",
+    };
 
     if (loading) {
         return <div className="loading">Cargando personajes...</div>;
@@ -46,27 +69,32 @@ function CharacterDetail() {
             {/* <h1>Detalles del Personaje</h1> */}
 
             {/* <h2>{`${character.name.first} ${character.name.middle} ${character.name.last}`}</h2> */}
-            <h1>{`${character.name.first} ${character.name.middle || ''} ${character.name.last}`}</h1>
-            <div className="character-detail">
+            <h1 style={titleStyle}>{`${character.name.first} ${character.name.middle || ""} ${character.name.last}`}</h1>
+            <div className="character-detail"style={detailcontainerStyle}>
 
                 <div className="character-detail-image">
                     <img src={character.images.main} alt={`${character.name.first} ${character.name.middle} ${character.name.last}`} />
                 </div>
 
                 <div className="character-description">
-                    <h2>Genero</h2>
-                    <p> {character.gender}</p>
-                    <h2>Especie</h2>
-                    <p> {character.species}</p>
-                    <h2>Hogar</h2>
-                    <p> {character.homePlanet || 'No Definido'}</p>
-                    <h2>Edad</h2>
-                    <p> {character.age}</p>
-                    <h2>Ocupación</h2>
-                    <p> {character.occupation || 'No Definido'}</p>
+                    <   h2 style={labelStyle}>Genero</h2>
+                    <p style={labelStyle}>{character.gender}</p>
+                    <h2 style={labelStyle}>Especie</h2>
+                    <p style={labelStyle}>{character.species}</p>
+
+                    <h2 style={labelStyle}>Hogar</h2>
+                    <p style={labelStyle}>{character.homePlanet || "No Definido"}</p>
+
+                    <h2 style={labelStyle}>Edad</h2>
+                    <p style={labelStyle}>{character.age}</p>
+
+                    <h2 style={labelStyle}>Ocupación</h2>
+                    <p style={labelStyle}>{character.occupation || "No Definido"}</p>
+
                 </div>
             </div>
-            <button onClick={() => window.history.back()} className='button-return'>← Volver</button>
+            <button onClick={() => window.history.back()} className="button-return" style={buttonStyle}> ← Volver</button>
+
         </div>
     );
 }
