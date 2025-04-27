@@ -6,7 +6,7 @@ function AboutInfo() {
     <div className='about-container'>
       <div className="about-header">
         <h1 className="about-title">Conoce a nuestro equipo</h1>
-        <p className="about-subtitle">Estudiantes y lectores de mangwas bl</p>
+        <p className="about-subtitle">Somos dos estudiantes aprendiendo sobre desarrollo web 💻</p>
         <hr className="decorative-line"></hr>
       </div>
       <div className="profile-container">
