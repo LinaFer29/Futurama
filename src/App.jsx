@@ -27,7 +27,7 @@ function AppContent() {
 
   // Estilos dinámicos basados en el tema
   const estilo = {
-    backgroundColor: modoOscuro ? "#222" : "#fff",
+    backgroundColor: modoOscuro ? "#222" : "#f5f7fb",
     color: modoOscuro ? "#fff" : "#000",
     minHeight: "100vh",
     transition: "all 0.3s ease",
@@ -59,11 +59,12 @@ function AppContent() {
           bottom: "20px",
           right: "20px",
           padding: "10px 20px",
-          backgroundColor: modoOscuro ? "#444" : "#ddd",
-          color: modoOscuro ? "#fff" : "#000",
+          backgroundColor: modoOscuro ? "#444" : "#3563E9",
+          color: "#fff",
           border: "none",
           borderRadius: "5px",
           cursor: "pointer",
+          outline: "none",
       }}
       >
         Cambiar a Modo {modoOscuro ? "Claro" : "Oscuro"}

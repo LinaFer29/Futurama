@@ -34,7 +34,7 @@ function CharacterDetail() {
     }, [id]);
     
     const detailcontainerStyle = {
-    backgroundColor: modoOscuro ? "#333" : "#eee",
+    backgroundColor: modoOscuro ? "#333" : "#FFFFFF",
     color: modoOscuro ? "#fff" : "#000",
     };
 
@@ -48,7 +48,6 @@ function CharacterDetail() {
 
     const buttonStyle = {
     backgroundColor: modoOscuro ? "#444" : "#007bff",
-    color: modoOscuro ? "#fff" : "#000",
     border: modoOscuro ? "1px solid #555" : "none",
     };
 

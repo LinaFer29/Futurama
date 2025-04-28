@@ -11,7 +11,7 @@ function CharacterCard({ character }) {
   const {modoOscuro}=useContext(ThemeContext)
 
     const StyleCard = {
-      backgroundColor: modoOscuro ? "#333" : "#eee",
+      backgroundColor: modoOscuro ? "#333" : "#FFFFFF",
       color: modoOscuro ? "#fff" : "#000",
 
     };

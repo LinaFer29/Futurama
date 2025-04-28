@@ -93,21 +93,14 @@ function ContactForm() {
   };
 
   const formStyle = {
-    backgroundColor: modoOscuro ? '#222' : '#fff',
+    backgroundColor: modoOscuro ? '#333' : '#FFFFFF',
     color: modoOscuro ? "#fff" : "#000",
-    border: modoOscuro ? '1px solid #555' : '1px solid #ccc',
   };
 
   const inputStyle = {
     backgroundColor: modoOscuro ? '#333' : '#fff',
     color: modoOscuro ? "#fff" : "#000",
     border: modoOscuro ? '1px solid #555' : '1px solid #ccc',
-  };
-  
-  const buttonStyle = {
-    backgroundColor: modoOscuro ? "#3563E9" : "#3563E9",
-    color: modoOscuro ? "#fff" : "#000",
-    border: modoOscuro ? '1px solid #555' : 'none',
   };
   
   const labelStyle = {
@@ -187,7 +180,7 @@ function ContactForm() {
           {errors.message && <span className="error-text">{errors.message}</span>}
         </div>
         
-        <button type="submit" className="submit-button" style={buttonStyle}>
+        <button type="submit" className="submit-button" >
           Enviar Mensaje
         </button>
       </form>

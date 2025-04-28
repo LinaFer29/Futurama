@@ -4,26 +4,26 @@ function InstallButton() {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [showButton, setShowButton] = useState(false);
 
-    // useEffect(() => {
-    //     const handleBeforeInstallPrompt = (e) => {
-    //         console.log("Evento beforeinstallprompt detectado"); 
-    //         e.preventDefault();
-    //         setDeferredPrompt(e);
-    //         setShowButton(true);
-    //     };
-
-    //     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-
-    //     return () => {
-    //         window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-    //     };
-    // }, []);
-    
     useEffect(() => {
-        if (!deferredPrompt) {
-          console.log("El evento beforeinstallprompt no se ha disparado automáticamente.");
-        }
-      }, [deferredPrompt]);
+        const handleBeforeInstallPrompt = (e) => {
+            console.log("Evento beforeinstallprompt detectado"); 
+            e.preventDefault();
+            setDeferredPrompt(e);
+            setShowButton(true);
+        };
+
+        window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+        return () => {
+            window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+        };
+    }, []);
+
+    // useEffect(() => {
+    //     if (!deferredPrompt) {
+    //       console.log("El evento beforeinstallprompt no se ha disparado automáticamente.");
+    //     }
+    //   }, [deferredPrompt]);
       
     const handleInstallClick = async () => {
         if (deferredPrompt) {

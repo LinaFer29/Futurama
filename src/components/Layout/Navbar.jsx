@@ -34,7 +34,7 @@ function Navbar({ onLogout }) {
   };
 
   const navbarStyle = {
-    backgroundColor: modoOscuro ? '#222' : '#f5f5f5', 
+    backgroundColor: modoOscuro ? '#222' : '#FFFFFF', 
     color: modoOscuro ? '#fff' : '#000',               
     borderBottom: modoOscuro ? '1px solid #555' : '1px solid #ccc',
   };
@@ -89,7 +89,7 @@ function Navbar({ onLogout }) {
                 <img src="/img/cerrar-sesion-de-usuario.png" alt="Icon Cerrar Sesion" className='icon-logout' /> 
               {showMenu && (
                 <div className="dropdown-menu">
-                  <button onClick={handleLogout}>Cerrar sesión</button>
+                  <button style={{outline: "none"}} onClick={handleLogout}>Cerrar sesión</button>
                 </div>
               )}
             </div>

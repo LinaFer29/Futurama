@@ -36,7 +36,6 @@ function Login({ onLogin }) {
 
   const buttonStyle = {
     backgroundColor: modoOscuro ? "#3563E9" : "#3563E9",
-    color: modoOscuro ? "#fff" : "#000",
     border: modoOscuro ? "none" : "1px solid #007bff",
   };
 
